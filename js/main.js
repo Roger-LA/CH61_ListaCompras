@@ -90,7 +90,7 @@ btnAgregar.addEventListener("click", function (event) {
 
         datos.push(elemento);
 
-        localStorage.setItem("datos", datos.JSON.stringify)
+        localStorage.setItem("datos", JSON.stringify(datos));
         localStorage.setItem("resumen", JSON.stringify(resumen));
 
         txtName.value = "";
@@ -105,8 +105,8 @@ window.addEventListener("load", function (event) {
     event.preventDefault();
 
     if (this.localStorage.getItem("datos") != null) {
-        let datos = JSON.parse(this.localStorage.getItem("datos"));
-        datos.array.forEach(e => {
+        datos = JSON.parse(this.localStorage.getItem("datos"));
+        datos.forEach(e => {
             let row = `<tr>
             <td>${e.cont}</td>
             <td>${e.nombre}</td>
