@@ -119,33 +119,45 @@ window.addEventListener("load", function (event) {
         });
     }
 
-        if (this.localStorage.getItem("resumen") != null) {
-            let resumen = JSON.parse(this.localStorage.getItem("resumen"));
-            cont = resumen.cont;
-            totalEnProductos = resumen.totalEnProductos;
-            costoTotal = resumen.costoTotal;
+    if (this.localStorage.getItem("resumen") != null) {
+        let resumen = JSON.parse(this.localStorage.getItem("resumen"));
+        cont = resumen.cont;
+        totalEnProductos = resumen.totalEnProductos;
+        costoTotal = resumen.costoTotal;
 
-        }//!null
+    }//!null
 
-        contadorProductos.innerText = cont;
-        productosTotal.innerText = totalEnProductos;
-        precioTotal.innerText = new Intl.NumberFormat("es-MX",
-            { style: "currency", currency: "MXN" }).format(costoTotal);
-
-
-    })//window load
+    contadorProductos.innerText = cont;
+    productosTotal.innerText = totalEnProductos;
+    precioTotal.innerText = new Intl.NumberFormat("es-MX",
+        { style: "currency", currency: "MXN" }).format(costoTotal);
 
 
-   btnClear.addEventListener("click",function(event){
+})//window load
+
+
+btnClear.addEventListener("click", function (event) {
+
     localStorage.clear()
+
+    cont = 0;
+    totalEnProductos = 0;
+    costoTotal = 0;
+    datos = [];
+
+    cuerpoTabla.innerHTML = "";
+    contadorProductos.innerText = "0";
+    productosTotal.innerText = "0";
+    precioTotal.innerText = "$0.00";
+
     txtName.style.border = "";
     txtNumber.style.border = "";
     alertValidacionesTexto.innerHTML = "";
     alertValidaciones.style.display = "none";
-    
-        txtName.value = "";
-        txtNumber.value = "";
-        txtName.focus();
 
-   })
-    
+
+    txtName.value = "";
+    txtNumber.value = "";
+    txtName.focus();
+
+})//btnClear
